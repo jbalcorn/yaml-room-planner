@@ -1,0 +1,19 @@
+# Invented example data.
+version: 1.0
+units: inches
+objects:
+  Sofa84:
+    category: sofa
+    symbol: sofa
+    footprint: {shape: rectangle, length: 84, depth: 34}
+    render: {arms: both, seats: 3}
+  Loveseat58:
+    category: loveseat
+    symbol: loveseat
+    footprint: {shape: rectangle, length: 58, depth: 34}
+    render: {arms: both, seats: 2}
+  Armchair32:
+    category: chair
+    symbol: lounge_chair
+    footprint: {shape: rectangle, length: 32, depth: 32}
+    render: {style: lounge, arms: true}

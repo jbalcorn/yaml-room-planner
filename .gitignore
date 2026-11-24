@@ -1,0 +1,12 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Personal floor plans and furniture. Only examples/ is meant to be published.
+/rooms/
+/legacy/
+/furniture*.yaml
+
+.DS_Store
+.vscode/

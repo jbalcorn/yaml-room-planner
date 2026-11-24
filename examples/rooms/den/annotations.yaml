@@ -1,0 +1,22 @@
+# One of each annotation type.
+annotations:
+  - {id: RoomLabel, type: label, text: Den example, x: 32, y: 14, bold: true}
+  - {id: SittingArea, type: area, text: Sitting area, x: 92, y: 36, size: 14}
+  - id: DoorNote
+    type: note
+    text: |
+      Keep this path
+      clear.
+    x: 100
+    y: 104
+    size: 11
+  - id: HearthCallout
+    type: callout
+    text: Hearth
+    x: 134
+    y: 40
+    leader_to: {x: 118, y: 19}
+  - id: WalkwayWidth
+    type: dimension
+    from: {x: 48, y: 90}
+    to: {x: 152, y: 90}

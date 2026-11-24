@@ -1,0 +1,8 @@
+version: 1.0
+units: inches
+placements:
+  - {id: Loveseat, object: Loveseat58, x: 14, y: 40, rotation: 90}
+  - {id: Armchair, object: Armchair32, x: 184, y: 130, rotation: 270}
+  - {id: Desk, object: Desk50, x: 196, y: 1, rotation: 180}
+  - {id: Round Table, object: RoundTable30, x: 100, y: 66}
+  - {id: Bookcase, object: Bookcase40, x: 10, y: 139, rotation: 0}

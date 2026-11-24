@@ -1,0 +1,33 @@
+# Invented example data: single door, window, and radiator.
+room:
+  id: Studio
+  name: Studio
+  units: inches
+  coordinate_system:
+    origin: northwest_inside_corner
+    x_direction: east
+    y_direction: south
+  shape: {type: rectangle, width: 180, depth: 144}
+  features:
+    - id: SouthDoor
+      type: doorway
+      wall: south
+      offset: 132
+      width: 40
+      label: Door
+      door: {width: 32, position: centered, leaves: 1, hinge: left, opens: into_room}
+    - id: WestWindow
+      type: window
+      wall: west
+      offset: 44
+      width: 60
+      panels: 2
+      label: Window
+    - id: NorthRadiator
+      type: radiator
+      x: 90
+      y: 0
+      depth: 8
+      length: 48
+      orientation: east_west
+      label: Radiator

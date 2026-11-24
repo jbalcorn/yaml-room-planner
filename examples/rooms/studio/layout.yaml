@@ -1,0 +1,9 @@
+version: 1.0
+units: inches
+placements:
+  - {id: Sofa, object: Sofa84, x: 40, y: 142, rotation: 0}
+  - {id: Coffee Table, object: CoffeeTable44, x: 60, y: 90, rotation: 0}
+  - {id: Armchair, object: Armchair32, x: 172, y: 60, rotation: 225}
+  - {id: Bookcase, object: Bookcase40, x: 70, y: 1, rotation: 180}
+  - {id: Side Table, object: SideTable20, x: 24, y: 126}
+  - {id: Lamp, object: FloorLamp14, x: 164, y: 16}

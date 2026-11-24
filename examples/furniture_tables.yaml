@@ -1,0 +1,30 @@
+# Invented example data.
+version: 1.0
+units: inches
+objects:
+  CoffeeTable44:
+    category: coffee_table
+    symbol: coffee_table
+    footprint: {shape: rectangle, length: 44, depth: 22}
+  SideTable20:
+    category: end_table
+    symbol: end_table
+    footprint: {shape: circle, diameter: 20}
+  RoundTable30:
+    category: end_table
+    symbol: table
+    footprint: {shape: circle, diameter: 30}
+  Desk50:
+    category: desk
+    symbol: desk
+    footprint: {shape: rectangle, length: 50, depth: 24}
+  Bookcase40:
+    category: shelves
+    symbol: bookshelf
+    footprint: {shape: rectangle, length: 40, depth: 12, height: 70}
+    render: {shelves: 4}
+  FloorLamp14:
+    category: floor_lamp
+    symbol: floor_lamp
+    footprint: {shape: circle, diameter: 14}
+    render: {stem: true}

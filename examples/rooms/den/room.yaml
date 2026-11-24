@@ -1,0 +1,40 @@
+# Invented example data: double doors, fireplace, opening, and reference line.
+room:
+  id: Den
+  name: Den
+  units: inches
+  coordinate_system:
+    origin: northwest_inside_corner
+    x_direction: east
+    y_direction: south
+  shape: {type: rectangle, width: 200, depth: 140}
+  features:
+    - id: SouthDoubleDoors
+      type: doorway
+      wall: south
+      offset: 70
+      width: 64
+      label: Double doors
+      door: {width: 60, position: centered, leaves: 2, hinge: both, opens: into_room}
+    - id: NorthFireplace
+      type: fixture
+      style: fireplace
+      x: 66
+      y: 0
+      width: 68
+      depth: 18
+      label: Fireplace
+    - id: EastOpening
+      type: opening
+      wall: east
+      offset: 50
+      width: 44
+      label: Opening
+    - id: WestWindow
+      type: window
+      wall: west
+      offset: 46
+      width: 50
+      label: Window
+  reference_lines:
+    - {id: ZoneLine, orientation: vertical, offset: 54, label: Zone line}
