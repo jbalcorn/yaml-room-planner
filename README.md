@@ -71,6 +71,17 @@ python ..\get_furniture.py
 Files merge in name order and the last definition wins. This overwrites
 `furniture.yaml`, so edit the source files instead.
 
+## Run the tests
+
+```powershell
+python -m pip install -r requirements-dev.txt
+python -m pytest --cov
+```
+
+The tests check that the committed example files match what the scripts produce.
+After an intentional drawing change, regenerate both example rooms with the
+quick-start commands, review them, and commit the new SVGs.
+
 ## License
 
 [MIT](LICENSE)

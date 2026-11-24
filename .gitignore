@@ -2,6 +2,8 @@
 .venv/
 __pycache__/
 *.pyc
+.pytest_cache/
+.coverage
 
 # Personal floor plans and furniture. Only examples/ is meant to be published.
 /rooms/

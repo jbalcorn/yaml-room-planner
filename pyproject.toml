@@ -1,0 +1,11 @@
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "--strict-markers"
+
+[tool.coverage.run]
+branch = true
+source = ["generate_room", "get_furniture", "render_layout"]
+
+[tool.coverage.report]
+show_missing = true
