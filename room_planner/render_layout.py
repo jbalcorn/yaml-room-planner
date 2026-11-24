@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Render furniture, layout, and annotations onto room.svg.
 
 Coordinates are in inches:
@@ -18,18 +17,13 @@ Circle anchor: center.
 
 from __future__ import annotations
 
-import argparse
 import math
 import os
-import sys
 import tempfile
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
-try:
-    import yaml
-except ImportError as exc:
-    raise SystemExit("PyYAML is required: pip install PyYAML") from exc
+import yaml
 
 SVG_NS = "http://www.w3.org/2000/svg"
 ET.register_namespace("", SVG_NS)
@@ -562,55 +556,6 @@ def load_optional_annotations(path: Path | None) -> dict:
     return load_yaml(path)
 
 
-def project_root() -> Path:
-    """Directory containing render_layout.py and the project files."""
-    return Path(__file__).resolve().parent
-
-
-def resolve_project_path(value: str | None, default: Path | None = None) -> Path | None:
-    """Resolve an option path independently of the current working directory.
-
-    An explicit relative path is tried first relative to the current directory,
-    then relative to the project directory containing this script.
-    """
-    if value is None:
-        return default
-
-    supplied = Path(value).expanduser()
-    if supplied.is_absolute():
-        return supplied
-
-    if supplied.exists():
-        return supplied.resolve()
-
-    return project_root() / supplied
-
-
-def resolve_room_argument(value: str) -> tuple[Path, Path | None]:
-    """Resolve --room as either an SVG path or a room directory/name.
-
-    Examples accepted from the project root:
-      --room living
-      --room rooms/living
-      --room rooms/living/room.svg
-    """
-    supplied = Path(value)
-    if supplied.is_file():
-        return supplied, supplied.parent
-    if supplied.is_dir():
-        candidate = supplied / "room.svg"
-        if candidate.exists():
-            return candidate, supplied
-    candidate_dir = project_root() / "rooms" / value
-    candidate = candidate_dir / "room.svg"
-    if candidate.exists():
-        return candidate, candidate_dir
-    raise FileNotFoundError(
-        f"Cannot resolve room {value!r}; expected an SVG path, room directory, "
-        f"or rooms/{value}/room.svg"
-    )
-
-
 def render(
     room_path: Path,
     furniture_path: Path,
@@ -652,88 +597,3 @@ def render(
 
     render_annotations(root, annotations)
     atomic_write(tree, output_path)
-
-
-def main() -> int:
-    parser = argparse.ArgumentParser(
-        description="Render a furniture layout onto a generated room SVG."
-    )
-    parser.add_argument(
-        "--room",
-        default="room.svg",
-        help="Room name (for example living), room directory, or room.svg path",
-    )
-    parser.add_argument("--furniture", default=None)
-    parser.add_argument("--layout", default=None)
-    parser.add_argument("--annotations", default=None)
-    parser.add_argument("--output", default=None)
-    parser.add_argument("--validate-only", action="store_true")
-    args = parser.parse_args()
-
-    try:
-        room_path, room_dir = resolve_room_argument(args.room)
-        root = project_root()
-        furniture_path = resolve_project_path(
-            args.furniture, root / "furniture.yaml"
-        )
-        layout_path = resolve_project_path(
-            args.layout,
-            room_dir / "layout.yaml" if room_dir else root / "layout.yaml",
-        )
-
-        if args.annotations:
-            annotations_path = resolve_project_path(args.annotations)
-        elif room_dir and (room_dir / "annotations.yaml").exists():
-            annotations_path = room_dir / "annotations.yaml"
-        elif (root / "annotations.yaml").exists():
-            annotations_path = root / "annotations.yaml"
-        else:
-            annotations_path = None
-
-        output_path = resolve_project_path(
-            args.output,
-            room_dir / "room_with_furniture.svg"
-            if room_dir
-            else root / "room_with_furniture.svg",
-        )
-
-        for label, path in (
-            ("room", room_path),
-            ("furniture", furniture_path),
-            ("layout", layout_path),
-        ):
-            if path is None or not path.exists():
-                raise FileNotFoundError(f"{label} file not found: {path}")
-
-        for label, path in (
-            ("room", room_path),
-            ("furniture", furniture_path),
-            ("layout", layout_path),
-        ):
-            if path is None or not path.exists():
-                raise FileNotFoundError(f"{label} file not found: {path}")
-
-        furniture = load_yaml(furniture_path)
-        layout = load_yaml(layout_path)
-        annotations = load_optional_annotations(annotations_path)
-        errors = validate(furniture, layout, annotations)
-        if errors:
-            print("Validation failed:", file=sys.stderr)
-            for error in errors:
-                print(f"  - {error}", file=sys.stderr)
-            return 1
-
-        if args.validate_only:
-            print("YAML validation passed.")
-            return 0
-
-        render(room_path, furniture_path, layout_path, annotations_path, output_path)
-        print(f"Wrote {output_path.resolve()}")
-        return 0
-    except Exception as exc:
-        print(f"Render failed: {exc}", file=sys.stderr)
-        return 1
-
-
-if __name__ == "__main__":
-    raise SystemExit(main())

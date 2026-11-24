@@ -1,3 +1,25 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "yaml-room-planner"
+version = "0.1.0"
+description = "Generate dimensioned room floor plans and furniture layouts as SVG from YAML."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+dependencies = ["PyYAML>=6.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-cov>=5"]
+
+[project.scripts]
+room-planner = "room_planner.cli:main"
+
+[tool.setuptools]
+packages = ["room_planner"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["."]
@@ -5,7 +27,7 @@ addopts = "--strict-markers"
 
 [tool.coverage.run]
 branch = true
-source = ["generate_room", "get_furniture", "render_layout"]
+source = ["room_planner"]
 
 [tool.coverage.report]
 show_missing = true

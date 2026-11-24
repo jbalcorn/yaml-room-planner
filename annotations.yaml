@@ -1,3 +1,0 @@
-# Project-level fallback annotations. Room-specific annotations belong beside
-# each room's layout.yaml file.
-annotations: []

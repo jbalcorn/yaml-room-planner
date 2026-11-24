@@ -1,11 +1,10 @@
 import math
-import sys
 from xml.etree import ElementTree as ET
 
 import pytest
 import yaml
 
-import render_layout
+from room_planner import render_layout
 
 SVG = "{http://www.w3.org/2000/svg}"
 
@@ -37,29 +36,6 @@ def make_callout(**changes):
         "id": "C", "type": "callout", "text": "Hello",
         "x": 50, "y": 50, "leader_to": {"x": 90, "y": 50}, **changes,
     }
-
-
-@pytest.fixture
-def project(tmp_path, monkeypatch):
-    """A temporary project with one room named 'demo'."""
-    room = tmp_path / "rooms" / "demo"
-    room.mkdir(parents=True)
-    (room / "room.svg").write_text(
-        '<svg xmlns="http://www.w3.org/2000/svg" data-origin-x="100" '
-        'data-origin-y="120" data-scale="2"><g id="generated-furniture"/></svg>',
-        encoding="utf-8",
-    )
-    (room / "layout.yaml").write_text(
-        yaml.safe_dump(make_layout(place(), place(id="P2", object="Lamp"))), encoding="utf-8"
-    )
-    (tmp_path / "furniture.yaml").write_text(yaml.safe_dump(make_furniture()), encoding="utf-8")
-    monkeypatch.setattr(render_layout, "project_root", lambda: tmp_path)
-    return tmp_path
-
-
-def run_main(monkeypatch, *args):
-    monkeypatch.setattr(sys, "argv", ["render_layout.py", *args])
-    return render_layout.main()
 
 
 # --- validation ---------------------------------------------------------
@@ -302,13 +278,29 @@ def test_multi_line_note_has_one_span_per_line():
     assert [span.text for span in root.iter(f"{SVG}tspan")] == ["one", "two"]
 
 
-# --- command line -------------------------------------------------------
+# --- files --------------------------------------------------------------
 
 
-def test_room_name_renders_the_project_files(project, monkeypatch):
-    assert run_main(monkeypatch, "--room", "demo") == 0
+@pytest.fixture
+def files(tmp_path):
+    """Write the input files and return the arguments for render()."""
+    (tmp_path / "room.svg").write_text(
+        '<svg xmlns="http://www.w3.org/2000/svg" data-origin-x="100" '
+        'data-origin-y="120" data-scale="2"><g id="generated-furniture"/></svg>',
+        encoding="utf-8",
+    )
+    layout = make_layout(place(), place(id="P2", object="Lamp"))
+    (tmp_path / "layout.yaml").write_text(yaml.safe_dump(layout), encoding="utf-8")
+    (tmp_path / "furniture.yaml").write_text(yaml.safe_dump(make_furniture()), encoding="utf-8")
+    return [tmp_path / n for n in ("room.svg", "furniture.yaml", "layout.yaml")] + [
+        None, tmp_path / "out.svg"
+    ]
 
-    root = ET.parse(project / "rooms/demo/room_with_furniture.svg").getroot()
+
+def test_furniture_replaces_the_existing_layer(files):
+    render_layout.render(*files)
+
+    root = ET.parse(files[-1]).getroot()
     layers = [n for n in root.iter() if n.get("id") == "generated-furniture"]
     assert len(layers) == 1
     assert [n.get("id") for n in layers[0]] == ["P1", "P2"]
@@ -316,53 +308,18 @@ def test_room_name_renders_the_project_files(project, monkeypatch):
     assert layers[0][0].get("transform") == "translate(120.00 220.00) rotate(0)"
 
 
-def test_rendering_again_replaces_the_furniture(project, monkeypatch):
-    run_main(monkeypatch, "--room", "demo")
-    output = project / "rooms/demo/room_with_furniture.svg"
-    first = output.read_bytes()
+def test_rendering_over_the_output_changes_nothing(files):
+    render_layout.render(*files)
+    first = files[-1].read_bytes()
 
-    assert run_main(monkeypatch, "--room", str(output), "--output", str(output)) == 0
-    assert output.read_bytes() == first
+    render_layout.render(files[-1], *files[1:])
 
-
-def test_validate_only_writes_nothing(project, monkeypatch):
-    assert run_main(monkeypatch, "--room", "demo", "--validate-only") == 0
-    assert not (project / "rooms/demo/room_with_furniture.svg").exists()
+    assert files[-1].read_bytes() == first
 
 
-def test_room_annotations_are_preferred_over_the_fallback(project, monkeypatch):
-    def save(path, text):
-        data = {"annotations": [{"id": "A", "type": "label", "text": text, "x": 1, "y": 1}]}
-        path.write_text(yaml.safe_dump(data), encoding="utf-8")
+def test_invalid_layout_writes_nothing(files):
+    files[2].write_text(yaml.safe_dump(make_layout(place(object="Throne"))), encoding="utf-8")
 
-    save(project / "annotations.yaml", "fallback")
-    run_main(monkeypatch, "--room", "demo")
-    output = project / "rooms/demo/room_with_furniture.svg"
-    assert "fallback" in output.read_text(encoding="utf-8")
-
-    save(project / "rooms/demo/annotations.yaml", "room note")
-    run_main(monkeypatch, "--room", "demo")
-    text = output.read_text(encoding="utf-8")
-    assert "room note" in text and "fallback" not in text
-
-
-def test_validation_errors_are_printed(project, monkeypatch, capsys):
-    (project / "rooms/demo/layout.yaml").write_text(
-        yaml.safe_dump(make_layout(place(object="Throne"))), encoding="utf-8"
-    )
-
-    assert run_main(monkeypatch, "--room", "demo") == 1
-    assert "unknown object 'Throne'" in capsys.readouterr().err
-    assert not (project / "rooms/demo/room_with_furniture.svg").exists()
-
-
-@pytest.mark.parametrize(
-    ("args", "message"),
-    [
-        (["--room", "attic"], "Cannot resolve room 'attic'"),
-        (["--room", "demo", "--furniture", "missing.yaml"], "furniture file not found"),
-    ],
-)
-def test_missing_files_are_reported(project, monkeypatch, capsys, args, message):
-    assert run_main(monkeypatch, *args) == 1
-    assert message in capsys.readouterr().err
+    with pytest.raises(ValueError, match="unknown object 'Throne'"):
+        render_layout.render(*files)
+    assert not files[-1].exists()

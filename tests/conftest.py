@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-import render_layout
+from room_planner import render_layout
 
 
 @pytest.fixture

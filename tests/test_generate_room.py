@@ -1,11 +1,12 @@
 import os
+import shutil
 import subprocess
 import sys
 from xml.etree import ElementTree as ET
 
 import pytest
 
-import generate_room
+from room_planner import generate_room
 
 SVG = "{http://www.w3.org/2000/svg}"
 
@@ -109,7 +110,7 @@ def test_feature_start_is_required():
 
 
 @pytest.mark.parametrize(
-    ("value", "expected"), [(12, '12"'), (12.5, '12.5"'), (39.25, '39.25"'), (1 / 3, '0.333"')]
+    ("value", "expected"), [(12, '12"'), (12.5, '12.5"'), (40.25, '40.25"'), (1 / 3, '0.333"')]
 )
 def test_fmt_inches(value, expected):
     assert generate_room.fmt_inches(value) == expected
@@ -179,39 +180,27 @@ def test_bad_reference_line_is_rejected(generate):
         generate(make_room(reference_lines=[{"id": "L", "orientation": "diagonal", "offset": 5}]))
 
 
-# --- command line -------------------------------------------------------
+# --- files --------------------------------------------------------------
 
 
 def test_output_is_the_same_on_every_run(repo_root, tmp_path):
     """Python randomizes set order per process, so use separate processes."""
+    shutil.copy(repo_root / "examples/house/den/room.yaml", tmp_path)
     results = set()
     for seed in ("0", "1", "2", "3"):
-        output = tmp_path / f"{seed}.svg"
         subprocess.run(
-            [sys.executable, repo_root / "generate_room.py",
-             repo_root / "examples/rooms/den/room.yaml", "-o", output],
-            check=True, capture_output=True,
+            [sys.executable, "-m", "room_planner", "generate", "--project", tmp_path],
+            check=True, capture_output=True, cwd=repo_root,
             env={**os.environ, "PYTHONHASHSEED": seed},
         )
-        results.add(output.read_bytes())
+        results.add((tmp_path / "room.svg").read_bytes())
     assert len(results) == 1
 
 
-def test_main_writes_room_svg_beside_the_yaml(tmp_path, monkeypatch):
-    source = tmp_path / "room.yaml"
-    source.write_text("room: {shape: {type: rectangle, width: 120, depth: 100}}", encoding="utf-8")
-    monkeypatch.setattr(sys, "argv", ["generate_room.py", str(source)])
-
-    assert generate_room.main() == 0
-    assert (tmp_path / "room.svg").exists()
-
-
-@pytest.mark.parametrize("text", ["[]", "other: 1", "room: {shape: {type: oval}}", "a: ["])
-def test_main_reports_bad_yaml(tmp_path, monkeypatch, capsys, text):
+@pytest.mark.parametrize("text", ["[]", "other: 1", "room: text"])
+def test_room_mapping_is_required(tmp_path, text):
     source = tmp_path / "room.yaml"
     source.write_text(text, encoding="utf-8")
-    monkeypatch.setattr(sys, "argv", ["generate_room.py", str(source)])
 
-    assert generate_room.main() == 2
-    assert "ERROR" in capsys.readouterr().err
-    assert not (tmp_path / "room.svg").exists()
+    with pytest.raises(ValueError, match="room|mapping"):
+        generate_room.load_yaml(source)

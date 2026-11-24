@@ -1,11 +1,15 @@
 # Python
 .venv/
 __pycache__/
+*.egg-info/
+build/
+dist/
 *.pyc
 .pytest_cache/
 .coverage
 
-# Personal floor plans and furniture. Only examples/ is meant to be published.
+# Personal floor plans belong outside this repository. These are a safeguard in
+# case any are left here: only examples/ is meant to be published.
 /rooms/
 /legacy/
 /furniture*.yaml

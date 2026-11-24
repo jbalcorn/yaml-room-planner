@@ -1,4 +1,4 @@
-# Room layout schema — version 1.0
+# YAML Room Planner schema — version 1.0
 
 All measurements are inches.
 

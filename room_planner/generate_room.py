@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Generate a dimensioned architectural room SVG from room.yaml.
 
 Supported room model (v1):
@@ -16,18 +15,12 @@ x increases east, and y increases south.
 """
 from __future__ import annotations
 
-import argparse
-import math
-import sys
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 from xml.etree import ElementTree as ET
 
-try:
-    import yaml
-except ImportError as exc:
-    raise SystemExit("PyYAML is required: pip install PyYAML") from exc
+import yaml
 
 SVG_NS = "http://www.w3.org/2000/svg"
 ET.register_namespace("", SVG_NS)
@@ -436,23 +429,3 @@ def generate(room: dict[str,Any], output: Path, scale: float) -> None:
     output.parent.mkdir(parents=True,exist_ok=True)
     tree=ET.ElementTree(root)
     tree.write(output,encoding="utf-8",xml_declaration=True)
-
-
-def main() -> int:
-    ap=argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("room_yaml",type=Path,help="Input room.yaml")
-    ap.add_argument("-o","--output",type=Path,help="Output SVG (default: room.svg beside YAML)")
-    ap.add_argument("--scale",type=float,default=3.0,help="SVG units per inch (default: 3)")
-    args=ap.parse_args()
-    if args.scale<=0: ap.error("--scale must be positive")
-    output=args.output or args.room_yaml.with_name("room.svg")
-    try:
-        room=load_yaml(args.room_yaml)
-        generate(room,output,args.scale)
-    except (OSError,ValueError,yaml.YAMLError) as exc:
-        print(f"ERROR: {exc}",file=sys.stderr); return 2
-    print(f"Generated {output}")
-    return 0
-
-if __name__=="__main__":
-    raise SystemExit(main())
