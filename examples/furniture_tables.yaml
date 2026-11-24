@@ -1,4 +1,7 @@
 # Invented example data.
+#
+# Changes to this file are not used until you run get_furniture.py, which merges
+# all furniture_*.yaml files into furniture.yaml.
 version: 1.0
 units: inches
 objects:

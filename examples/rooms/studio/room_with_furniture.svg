@@ -12,12 +12,12 @@
   <rect x="96.000" y="96.000" width="540.000" height="432.000" fill="#f7f1e8" />
   <text class="title" x="366.000" y="30" text-anchor="middle">Studio — Dimensioned Master</text>
   <g id="room-geometry">
-    <line class="wall" x1="96.000" y1="96.000" x2="96.000" y2="228.000" />
-    <line class="wall" x1="96.000" y1="408.000" x2="96.000" y2="528.000" />
-    <line class="wall" x1="96.000" y1="528.000" x2="492.000" y2="528.000" />
-    <line class="wall" x1="612.000" y1="528.000" x2="636.000" y2="528.000" />
     <line class="wall" x1="96.000" y1="96.000" x2="636.000" y2="96.000" />
     <line class="wall" x1="636.000" y1="96.000" x2="636.000" y2="528.000" />
+    <line class="wall" x1="96.000" y1="528.000" x2="492.000" y2="528.000" />
+    <line class="wall" x1="612.000" y1="528.000" x2="636.000" y2="528.000" />
+    <line class="wall" x1="96.000" y1="96.000" x2="96.000" y2="228.000" />
+    <line class="wall" x1="96.000" y1="408.000" x2="96.000" y2="528.000" />
   </g>
   <g id="fixed-features">
     <line class="door" x1="504.000" y1="528.000" x2="600.000" y2="528.000" />

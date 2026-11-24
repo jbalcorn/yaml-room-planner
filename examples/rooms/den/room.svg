@@ -12,13 +12,13 @@
   <rect x="96.000" y="96.000" width="600.000" height="420.000" fill="#f7f1e8" />
   <text class="title" x="396.000" y="30" text-anchor="middle">Den — Dimensioned Master</text>
   <g id="room-geometry">
-    <line class="wall" x1="96.000" y1="96.000" x2="96.000" y2="234.000" />
-    <line class="wall" x1="96.000" y1="384.000" x2="96.000" y2="516.000" />
-    <line class="wall" x1="96.000" y1="516.000" x2="306.000" y2="516.000" />
-    <line class="wall" x1="498.000" y1="516.000" x2="696.000" y2="516.000" />
+    <line class="wall" x1="96.000" y1="96.000" x2="696.000" y2="96.000" />
     <line class="wall" x1="696.000" y1="96.000" x2="696.000" y2="246.000" />
     <line class="wall" x1="696.000" y1="378.000" x2="696.000" y2="516.000" />
-    <line class="wall" x1="96.000" y1="96.000" x2="696.000" y2="96.000" />
+    <line class="wall" x1="96.000" y1="516.000" x2="306.000" y2="516.000" />
+    <line class="wall" x1="498.000" y1="516.000" x2="696.000" y2="516.000" />
+    <line class="wall" x1="96.000" y1="96.000" x2="96.000" y2="234.000" />
+    <line class="wall" x1="96.000" y1="384.000" x2="96.000" y2="516.000" />
   </g>
   <g id="fixed-features">
     <line class="door" x1="312.000" y1="516.000" x2="492.000" y2="516.000" />
