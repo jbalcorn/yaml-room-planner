@@ -35,7 +35,7 @@ ET.register_namespace("", SVG_NS)
 def q(tag: str) -> str:
     return f"{{{SVG_NS}}}{tag}"
 
-WALLS = {"north", "east", "south", "west"}
+WALLS = ("north", "east", "south", "west")
 
 @dataclass(frozen=True)
 class Canvas:
