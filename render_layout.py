@@ -373,18 +373,22 @@ def render_circle(group: ET.Element, placement: dict, definition: dict) -> None:
 
     render = definition.get("render") or {}
     if render.get("stem"):
+        dot = max(2.5, radius * SCALE * 0.15)
         ET.SubElement(group, q("circle"), {
             "cx": f"{sx(x):.2f}", "cy": f"{sy(y):.2f}",
-            "r": f"{max(2.5, radius*SCALE*0.15):.2f}",
+            "r": f"{dot:.2f}",
             "fill": stroke,
         })
     else:
+        dot = 3.0
         ET.SubElement(group, q("circle"), {
             "cx": f"{sx(x):.2f}", "cy": f"{sy(y):.2f}",
-            "r": "3", "fill": stroke,
+            "r": f"{dot:g}", "fill": stroke,
         })
 
-    add_text(group, sx(x), sy(y), placement["id"], 10)
+    # Keep the label clear of the center dot.
+    size = 10
+    add_text(group, sx(x), sy(y) + dot + size / 2 + 2, placement["id"], size)
 
 def remove_generated_layer(root: ET.Element, layer_id: str) -> None:
     # Search recursively, not only among direct children.
@@ -419,19 +423,52 @@ def annotation_text(group: ET.Element, x: float, y: float, text: str, item: dict
         })
         span.text = line
 
-def callout_leader_start(item: dict) -> tuple[float, float] | None:
-    """Return the SVG point where a callout's leader leaves its text.
+def text_half_size(text: str, size: float) -> tuple[float, float]:
+    """Estimate half the width and height of a text block, with padding.
 
-    The text box is estimated from the font size, because SVG text cannot be
-    measured here. Returns None when the target lies within the text box.
+    SVG text cannot be measured here, so this uses the font size.
     """
-    size = float(item.get("size", 12))
-    lines = item["text"].splitlines() or [""]
+    lines = text.splitlines() or [""]
     pad = 4.0
     half_w = max(len(line) for line in lines) * size * 0.6 / 2 + pad
     half_h = ((len(lines) - 1) * size * 1.25 + size * 1.05) / 2 + pad
-    # Text is placed by baseline, so its visual center is slightly above y.
-    center_y = -size * 0.275
+    return half_w, half_h
+
+def text_center_offset(size: float) -> float:
+    """Text is placed by baseline, so its visual center is above its y."""
+    return -size * 0.275
+
+def dimension_text_position(
+    item: dict, text: str, x1: float, y1: float, x2: float, y2: float
+) -> tuple[float, float]:
+    """Return room coordinates that place text beside a dimension line."""
+    size = float(item.get("size", 12))
+    half_w, half_h = text_half_size(text, size)
+    angle = math.radians(float(item.get("rotation", 0)))
+    cos, sin = math.cos(angle), math.sin(angle)
+
+    # Unit normal pointing up, or right for a vertical line.
+    dx, dy = x2 - x1, y2 - y1
+    length = math.hypot(dx, dy)
+    nx, ny = (dy / length, -dx / length) if length else (0.0, -1.0)
+    if ny > 1e-9 or (abs(ny) <= 1e-9 and nx < 0):
+        nx, ny = -nx, -ny
+
+    # Move by the text box's reach along the normal.
+    reach = half_w * abs(nx * cos + ny * sin) + half_h * abs(-nx * sin + ny * cos)
+    center_y = text_center_offset(size)
+    px = nx * reach + center_y * sin
+    py = ny * reach - center_y * cos
+    return (x1 + x2) / 2 + px / SCALE, (y1 + y2) / 2 + py / SCALE
+
+def callout_leader_start(item: dict) -> tuple[float, float] | None:
+    """Return the SVG point where a callout's leader leaves its text.
+
+    Returns None when the target lies within the text box.
+    """
+    size = float(item.get("size", 12))
+    half_w, half_h = text_half_size(item["text"], size)
+    center_y = text_center_offset(size)
 
     # Work in the text's own unrotated frame, relative to its anchor.
     angle = math.radians(float(item.get("rotation", 0)))
@@ -502,7 +539,8 @@ def render_annotations(root: ET.Element, annotations: dict) -> None:
             # Fix auto label if no override was supplied.
             if "text" not in item:
                 text = f'{distance:.1f}'.rstrip("0").rstrip(".") + '"'
-            annotation_text(group, (x1+x2)/2, (y1+y2)/2, text, item)
+            text_x, text_y = dimension_text_position(item, text, x1, y1, x2, y2)
+            annotation_text(group, text_x, text_y, text, item)
 
 def atomic_write(tree: ET.ElementTree, output_path: Path) -> None:
     output_path.parent.mkdir(parents=True, exist_ok=True)

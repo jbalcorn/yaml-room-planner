@@ -332,7 +332,16 @@ def draw_labels(group: ET.Element, room: dict[str, Any], features: list[dict[str
         fid=f["id"]; label=f.get("label") or fid.replace("_"," ")
         if f["type"] in {"doorway","window","opening"}:
             wall=f["wall"]; s=feature_start(f,wall,width,depth); mid=s+float(f["width"])/2
-            if wall=="north": text(group,"label",mid,-5.5,label,c)
+            # A door's label goes on the side of the wall away from its swing.
+            # Other labels stay inside, except on the north wall.
+            if f["type"]=="doorway": outside=f["door"].get("opens","into_room")=="into_room"
+            else: outside=wall=="north"
+            if f["type"]=="doorway" or wall=="north":
+                off=4 if outside else -4; half=4/c.scale  # half the text height, in inches
+                if wall=="north": text(group,"label",mid,-off+half,label,c)
+                elif wall=="south": text(group,"label",mid,depth+off+half,label,c)
+                elif wall=="east": text(group,"label",width+off-half,mid,label,c,rotation=90)
+                else: text(group,"label",-off-half,mid,label,c,rotation=90)
             elif wall=="south": text(group,"label",mid,depth-4,label,c)
             elif wall=="east": text(group,"label",width-4,mid,label,c,rotation=90)
             else: text(group,"label",4,mid,label,c,rotation=90)

@@ -34,7 +34,7 @@
   </g>
   <g id="reference-lines" />
   <g id="feature-labels">
-    <text class="label" x="552.000" y="527.000" text-anchor="middle">Door</text>
+    <text class="label" x="552.000" y="555.000" text-anchor="middle">Door</text>
     <text class="label" x="108.000" y="329.000" text-anchor="middle" transform="rotate(90 108.000 329.000)">Window</text>
     <text class="small" x="438.000" y="119.000" text-anchor="middle">Radiator</text>
   </g>

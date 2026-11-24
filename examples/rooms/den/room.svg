@@ -36,7 +36,7 @@
     <text class="small" x="267.000" y="515.000" text-anchor="start">Zone line</text>
   </g>
   <g id="feature-labels">
-    <text class="label" x="402.000" y="515.000" text-anchor="middle">Double doors</text>
+    <text class="label" x="402.000" y="543.000" text-anchor="middle">Double doors</text>
     <text class="small" x="396.000" y="134.000" text-anchor="middle">Fireplace</text>
     <text class="label" x="684.000" y="323.000" text-anchor="middle" transform="rotate(90 684.000 323.000)">Opening</text>
     <text class="label" x="108.000" y="320.000" text-anchor="middle" transform="rotate(90 108.000 320.000)">Window</text>
