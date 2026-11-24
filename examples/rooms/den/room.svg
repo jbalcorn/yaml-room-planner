@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<svg xmlns="http://www.w3.org/2000/svg" width="792" height="612" viewBox="0 0 792.000 612.000" data-origin-x="96" data-origin-y="96" data-scale="3" data-room-width="200" data-room-depth="140" data-generated-from="room.yaml">
+<svg xmlns="http://www.w3.org/2000/svg" width="792" height="623" viewBox="0 0 792.000 623.000" data-origin-x="96" data-origin-y="107" data-scale="3" data-room-width="200" data-room-depth="140" data-generated-from="room.yaml">
   <defs>
     <marker id="dim-arrow" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto-start-reverse" markerUnits="strokeWidth">
       <path d="M 0 0 L 7 3.5 L 0 7 z" fill="#555" />
@@ -9,71 +9,71 @@
 </style>
   </defs>
   <rect width="100%" height="100%" fill="white" />
-  <rect x="96.000" y="96.000" width="600.000" height="420.000" fill="#f7f1e8" />
+  <rect x="96.000" y="107.000" width="600.000" height="420.000" fill="#f7f1e8" />
   <text class="title" x="396.000" y="30" text-anchor="middle">Den — Dimensioned Master</text>
   <g id="room-geometry">
-    <line class="wall" x1="96.000" y1="96.000" x2="696.000" y2="96.000" />
-    <line class="wall" x1="696.000" y1="96.000" x2="696.000" y2="246.000" />
-    <line class="wall" x1="696.000" y1="378.000" x2="696.000" y2="516.000" />
-    <line class="wall" x1="96.000" y1="516.000" x2="306.000" y2="516.000" />
-    <line class="wall" x1="498.000" y1="516.000" x2="696.000" y2="516.000" />
-    <line class="wall" x1="96.000" y1="96.000" x2="96.000" y2="234.000" />
-    <line class="wall" x1="96.000" y1="384.000" x2="96.000" y2="516.000" />
+    <line class="wall" x1="96.000" y1="107.000" x2="696.000" y2="107.000" />
+    <line class="wall" x1="696.000" y1="107.000" x2="696.000" y2="257.000" />
+    <line class="wall" x1="696.000" y1="389.000" x2="696.000" y2="527.000" />
+    <line class="wall" x1="96.000" y1="527.000" x2="306.000" y2="527.000" />
+    <line class="wall" x1="498.000" y1="527.000" x2="696.000" y2="527.000" />
+    <line class="wall" x1="96.000" y1="107.000" x2="96.000" y2="245.000" />
+    <line class="wall" x1="96.000" y1="395.000" x2="96.000" y2="527.000" />
   </g>
   <g id="fixed-features">
-    <line class="door" x1="312.000" y1="516.000" x2="492.000" y2="516.000" />
-    <line class="door" x1="312.000" y1="516.000" x2="312.000" y2="426.000" />
-    <line class="door" x1="492.000" y1="516.000" x2="492.000" y2="426.000" />
-    <path class="door" d="M 402.000 516.000 A 90.000 90.000 0 0 0 312.000 426.000" />
-    <path class="door" d="M 402.000 516.000 A 90.000 90.000 0 0 1 492.000 426.000" />
-    <rect class="fixture" x="294.000" y="96.000" width="204.000" height="54.000" rx="2" />
-    <rect class="fixture-line" x="306.000" y="108.000" width="180.000" height="30.000" />
-    <line class="window" x1="92.250" y1="234.000" x2="92.250" y2="384.000" />
-    <line class="window" x1="99.750" y1="234.000" x2="99.750" y2="384.000" />
+    <line class="door" x1="312.000" y1="527.000" x2="492.000" y2="527.000" />
+    <line class="door" x1="312.000" y1="527.000" x2="312.000" y2="437.000" />
+    <line class="door" x1="492.000" y1="527.000" x2="492.000" y2="437.000" />
+    <path class="door" d="M 402.000 527.000 A 90.000 90.000 0 0 0 312.000 437.000" />
+    <path class="door" d="M 402.000 527.000 A 90.000 90.000 0 0 1 492.000 437.000" />
+    <rect class="fixture" x="294.000" y="107.000" width="204.000" height="54.000" rx="2" />
+    <rect class="fixture-line" x="306.000" y="119.000" width="180.000" height="30.000" />
+    <line class="window" x1="92.250" y1="245.000" x2="92.250" y2="395.000" />
+    <line class="window" x1="99.750" y1="245.000" x2="99.750" y2="395.000" />
   </g>
   <g id="reference-lines">
-    <line class="reference-line" x1="258.000" y1="96.000" x2="258.000" y2="516.000" />
-    <text class="small" x="267.000" y="504.000" text-anchor="start">Zone line</text>
+    <line class="reference-line" x1="258.000" y1="107.000" x2="258.000" y2="527.000" />
+    <text class="small" x="267.000" y="515.000" text-anchor="start">Zone line</text>
   </g>
   <g id="feature-labels">
-    <text class="label" x="402.000" y="504.000" text-anchor="middle">Double doors</text>
-    <text class="small" x="396.000" y="123.000" text-anchor="middle">Fireplace</text>
-    <text class="label" x="684.000" y="312.000" text-anchor="middle" transform="rotate(90 684.000 312.000)">Opening</text>
-    <text class="label" x="108.000" y="309.000" text-anchor="middle" transform="rotate(90 108.000 309.000)">Window</text>
+    <text class="label" x="402.000" y="515.000" text-anchor="middle">Double doors</text>
+    <text class="small" x="396.000" y="134.000" text-anchor="middle">Fireplace</text>
+    <text class="label" x="684.000" y="323.000" text-anchor="middle" transform="rotate(90 684.000 323.000)">Opening</text>
+    <text class="label" x="108.000" y="320.000" text-anchor="middle" transform="rotate(90 108.000 320.000)">Window</text>
   </g>
   <g id="dimensions">
-    <line class="ext" x1="96.000" y1="96.000" x2="96.000" y2="39.000" />
-    <line class="ext" x1="696.000" y1="96.000" x2="696.000" y2="39.000" />
-    <line class="dim" x1="96.000" y1="48.000" x2="696.000" y2="48.000" />
-    <text class="small" x="396.000" y="39.000" text-anchor="middle">200"</text>
-    <line class="ext" x1="33.000" y1="96.000" x2="96.000" y2="96.000" />
-    <line class="ext" x1="33.000" y1="516.000" x2="96.000" y2="516.000" />
-    <line class="dim" x1="45.000" y1="96.000" x2="45.000" y2="516.000" />
-    <text class="small" x="33.000" y="306.000" text-anchor="middle" transform="rotate(90 33.000 306.000)">140"</text>
-    <line class="dim" x1="96.000" y1="72.000" x2="696.000" y2="72.000" />
-    <text class="small" x="396.000" y="64.500" text-anchor="middle">200"</text>
-    <line class="dim" x1="720.000" y1="96.000" x2="720.000" y2="246.000" />
-    <text class="small" x="732.000" y="171.000" text-anchor="middle" transform="rotate(90 732.000 171.000)">50"</text>
-    <line class="dim" x1="720.000" y1="246.000" x2="720.000" y2="378.000" />
-    <text class="small" x="732.000" y="312.000" text-anchor="middle" transform="rotate(90 732.000 312.000)">44"</text>
-    <line class="dim" x1="720.000" y1="378.000" x2="720.000" y2="516.000" />
-    <text class="small" x="732.000" y="447.000" text-anchor="middle" transform="rotate(90 732.000 447.000)">46"</text>
-    <line class="dim" x1="96.000" y1="540.000" x2="306.000" y2="540.000" />
-    <text class="small" x="201.000" y="552.000" text-anchor="middle">70"</text>
-    <line class="dim" x1="306.000" y1="540.000" x2="498.000" y2="540.000" />
-    <text class="small" x="402.000" y="552.000" text-anchor="middle">64"</text>
-    <line class="dim" x1="498.000" y1="540.000" x2="696.000" y2="540.000" />
-    <text class="small" x="597.000" y="552.000" text-anchor="middle">66"</text>
-    <line class="dim" x1="72.000" y1="96.000" x2="72.000" y2="234.000" />
-    <text class="small" x="60.000" y="165.000" text-anchor="middle" transform="rotate(90 60.000 165.000)">46"</text>
-    <line class="dim" x1="72.000" y1="234.000" x2="72.000" y2="384.000" />
-    <text class="small" x="60.000" y="309.000" text-anchor="middle" transform="rotate(90 60.000 309.000)">50"</text>
-    <line class="dim" x1="72.000" y1="384.000" x2="72.000" y2="516.000" />
-    <text class="small" x="60.000" y="450.000" text-anchor="middle" transform="rotate(90 60.000 450.000)">44"</text>
+    <line class="ext" x1="96.000" y1="107.000" x2="96.000" y2="50.000" />
+    <line class="ext" x1="696.000" y1="107.000" x2="696.000" y2="50.000" />
+    <line class="dim" x1="96.000" y1="59.000" x2="696.000" y2="59.000" />
+    <text class="small" x="396.000" y="50.000" text-anchor="middle">200"</text>
+    <line class="ext" x1="33.000" y1="107.000" x2="96.000" y2="107.000" />
+    <line class="ext" x1="33.000" y1="527.000" x2="96.000" y2="527.000" />
+    <line class="dim" x1="45.000" y1="107.000" x2="45.000" y2="527.000" />
+    <text class="small" x="33.000" y="317.000" text-anchor="middle" transform="rotate(90 33.000 317.000)">140"</text>
+    <line class="dim" x1="96.000" y1="83.000" x2="696.000" y2="83.000" />
+    <text class="small" x="396.000" y="75.500" text-anchor="middle">200"</text>
+    <line class="dim" x1="720.000" y1="107.000" x2="720.000" y2="257.000" />
+    <text class="small" x="732.000" y="182.000" text-anchor="middle" transform="rotate(90 732.000 182.000)">50"</text>
+    <line class="dim" x1="720.000" y1="257.000" x2="720.000" y2="389.000" />
+    <text class="small" x="732.000" y="323.000" text-anchor="middle" transform="rotate(90 732.000 323.000)">44"</text>
+    <line class="dim" x1="720.000" y1="389.000" x2="720.000" y2="527.000" />
+    <text class="small" x="732.000" y="458.000" text-anchor="middle" transform="rotate(90 732.000 458.000)">46"</text>
+    <line class="dim" x1="96.000" y1="551.000" x2="306.000" y2="551.000" />
+    <text class="small" x="201.000" y="563.000" text-anchor="middle">70"</text>
+    <line class="dim" x1="306.000" y1="551.000" x2="498.000" y2="551.000" />
+    <text class="small" x="402.000" y="563.000" text-anchor="middle">64"</text>
+    <line class="dim" x1="498.000" y1="551.000" x2="696.000" y2="551.000" />
+    <text class="small" x="597.000" y="563.000" text-anchor="middle">66"</text>
+    <line class="dim" x1="72.000" y1="107.000" x2="72.000" y2="245.000" />
+    <text class="small" x="60.000" y="176.000" text-anchor="middle" transform="rotate(90 60.000 176.000)">46"</text>
+    <line class="dim" x1="72.000" y1="245.000" x2="72.000" y2="395.000" />
+    <text class="small" x="60.000" y="320.000" text-anchor="middle" transform="rotate(90 60.000 320.000)">50"</text>
+    <line class="dim" x1="72.000" y1="395.000" x2="72.000" y2="527.000" />
+    <text class="small" x="60.000" y="461.000" text-anchor="middle" transform="rotate(90 60.000 461.000)">44"</text>
   </g>
   <g id="coordinate-reference">
-    <circle cx="96.000" cy="96.000" r="4" fill="#b00020" />
-    <text class="small" x="103.000" y="110.000">(0,0)</text>
+    <circle cx="96.000" cy="107.000" r="4" fill="#b00020" />
+    <text class="small" x="103.000" y="121.000">(0,0)</text>
   </g>
   <g id="generated-furniture" />
   <g id="generated-annotations" />

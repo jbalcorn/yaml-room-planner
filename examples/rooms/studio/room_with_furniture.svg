@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<svg xmlns="http://www.w3.org/2000/svg" width="732" height="624" viewBox="0 0 732.000 624.000" data-origin-x="96" data-origin-y="96" data-scale="3" data-room-width="180" data-room-depth="144" data-generated-from="room.yaml">
+<svg xmlns="http://www.w3.org/2000/svg" width="732" height="635" viewBox="0 0 732.000 635.000" data-origin-x="96" data-origin-y="107" data-scale="3" data-room-width="180" data-room-depth="144" data-generated-from="room.yaml">
   <defs>
     <marker id="dim-arrow" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto-start-reverse" markerUnits="strokeWidth">
       <path d="M 0 0 L 7 3.5 L 0 7 z" fill="#555" />
@@ -9,63 +9,63 @@
 </style>
   </defs>
   <rect width="100%" height="100%" fill="white" />
-  <rect x="96.000" y="96.000" width="540.000" height="432.000" fill="#f7f1e8" />
+  <rect x="96.000" y="107.000" width="540.000" height="432.000" fill="#f7f1e8" />
   <text class="title" x="366.000" y="30" text-anchor="middle">Studio — Dimensioned Master</text>
   <g id="room-geometry">
-    <line class="wall" x1="96.000" y1="96.000" x2="636.000" y2="96.000" />
-    <line class="wall" x1="636.000" y1="96.000" x2="636.000" y2="528.000" />
-    <line class="wall" x1="96.000" y1="528.000" x2="492.000" y2="528.000" />
-    <line class="wall" x1="612.000" y1="528.000" x2="636.000" y2="528.000" />
-    <line class="wall" x1="96.000" y1="96.000" x2="96.000" y2="228.000" />
-    <line class="wall" x1="96.000" y1="408.000" x2="96.000" y2="528.000" />
+    <line class="wall" x1="96.000" y1="107.000" x2="636.000" y2="107.000" />
+    <line class="wall" x1="636.000" y1="107.000" x2="636.000" y2="539.000" />
+    <line class="wall" x1="96.000" y1="539.000" x2="492.000" y2="539.000" />
+    <line class="wall" x1="612.000" y1="539.000" x2="636.000" y2="539.000" />
+    <line class="wall" x1="96.000" y1="107.000" x2="96.000" y2="239.000" />
+    <line class="wall" x1="96.000" y1="419.000" x2="96.000" y2="539.000" />
   </g>
   <g id="fixed-features">
-    <line class="door" x1="504.000" y1="528.000" x2="600.000" y2="528.000" />
-    <line class="door" x1="600.000" y1="528.000" x2="600.000" y2="432.000" />
-    <path class="door" d="M 504.000 528.000 A 96.000 96.000 0 0 1 600.000 432.000" />
-    <line class="window" x1="92.250" y1="228.000" x2="92.250" y2="408.000" />
-    <line class="window" x1="99.750" y1="228.000" x2="99.750" y2="408.000" />
-    <line class="window" x1="92.250" y1="318.000" x2="99.750" y2="318.000" />
-    <rect class="fixture" x="366.000" y="96.000" width="144.000" height="24.000" rx="2" />
-    <line class="fixture-line" x1="369.000" y1="100.800" x2="507.000" y2="100.800" />
-    <line class="fixture-line" x1="369.000" y1="105.600" x2="507.000" y2="105.600" />
-    <line class="fixture-line" x1="369.000" y1="110.400" x2="507.000" y2="110.400" />
-    <line class="fixture-line" x1="369.000" y1="115.200" x2="507.000" y2="115.200" />
+    <line class="door" x1="504.000" y1="539.000" x2="600.000" y2="539.000" />
+    <line class="door" x1="600.000" y1="539.000" x2="600.000" y2="443.000" />
+    <path class="door" d="M 504.000 539.000 A 96.000 96.000 0 0 1 600.000 443.000" />
+    <line class="window" x1="92.250" y1="239.000" x2="92.250" y2="419.000" />
+    <line class="window" x1="99.750" y1="239.000" x2="99.750" y2="419.000" />
+    <line class="window" x1="92.250" y1="329.000" x2="99.750" y2="329.000" />
+    <rect class="fixture" x="366.000" y="107.000" width="144.000" height="24.000" rx="2" />
+    <line class="fixture-line" x1="369.000" y1="111.800" x2="507.000" y2="111.800" />
+    <line class="fixture-line" x1="369.000" y1="116.600" x2="507.000" y2="116.600" />
+    <line class="fixture-line" x1="369.000" y1="121.400" x2="507.000" y2="121.400" />
+    <line class="fixture-line" x1="369.000" y1="126.200" x2="507.000" y2="126.200" />
   </g>
   <g id="reference-lines" />
   <g id="feature-labels">
-    <text class="label" x="552.000" y="516.000" text-anchor="middle">Door</text>
-    <text class="label" x="108.000" y="318.000" text-anchor="middle" transform="rotate(90 108.000 318.000)">Window</text>
-    <text class="small" x="438.000" y="108.000" text-anchor="middle">Radiator</text>
+    <text class="label" x="552.000" y="527.000" text-anchor="middle">Door</text>
+    <text class="label" x="108.000" y="329.000" text-anchor="middle" transform="rotate(90 108.000 329.000)">Window</text>
+    <text class="small" x="438.000" y="119.000" text-anchor="middle">Radiator</text>
   </g>
   <g id="dimensions">
-    <line class="ext" x1="96.000" y1="96.000" x2="96.000" y2="39.000" />
-    <line class="ext" x1="636.000" y1="96.000" x2="636.000" y2="39.000" />
-    <line class="dim" x1="96.000" y1="48.000" x2="636.000" y2="48.000" />
-    <text class="small" x="366.000" y="39.000" text-anchor="middle">180"</text>
-    <line class="ext" x1="33.000" y1="96.000" x2="96.000" y2="96.000" />
-    <line class="ext" x1="33.000" y1="528.000" x2="96.000" y2="528.000" />
-    <line class="dim" x1="45.000" y1="96.000" x2="45.000" y2="528.000" />
-    <text class="small" x="33.000" y="312.000" text-anchor="middle" transform="rotate(90 33.000 312.000)">144"</text>
-    <line class="dim" x1="96.000" y1="72.000" x2="636.000" y2="72.000" />
-    <text class="small" x="366.000" y="64.500" text-anchor="middle">180"</text>
-    <line class="dim" x1="660.000" y1="96.000" x2="660.000" y2="528.000" />
-    <text class="small" x="672.000" y="312.000" text-anchor="middle" transform="rotate(90 672.000 312.000)">144"</text>
-    <line class="dim" x1="96.000" y1="552.000" x2="492.000" y2="552.000" />
-    <text class="small" x="294.000" y="564.000" text-anchor="middle">132"</text>
-    <line class="dim" x1="492.000" y1="552.000" x2="612.000" y2="552.000" />
-    <text class="small" x="552.000" y="564.000" text-anchor="middle">40"</text>
-    <line class="dim" x1="612.000" y1="552.000" x2="636.000" y2="552.000" />
-    <text class="small" x="624.000" y="564.000" text-anchor="middle">8"</text>
-    <line class="dim" x1="72.000" y1="96.000" x2="72.000" y2="228.000" />
-    <text class="small" x="60.000" y="162.000" text-anchor="middle" transform="rotate(90 60.000 162.000)">44"</text>
-    <line class="dim" x1="72.000" y1="228.000" x2="72.000" y2="408.000" />
-    <text class="small" x="60.000" y="318.000" text-anchor="middle" transform="rotate(90 60.000 318.000)">60"</text>
-    <line class="dim" x1="72.000" y1="408.000" x2="72.000" y2="528.000" />
-    <text class="small" x="60.000" y="468.000" text-anchor="middle" transform="rotate(90 60.000 468.000)">40"</text>
+    <line class="ext" x1="96.000" y1="107.000" x2="96.000" y2="50.000" />
+    <line class="ext" x1="636.000" y1="107.000" x2="636.000" y2="50.000" />
+    <line class="dim" x1="96.000" y1="59.000" x2="636.000" y2="59.000" />
+    <text class="small" x="366.000" y="50.000" text-anchor="middle">180"</text>
+    <line class="ext" x1="33.000" y1="107.000" x2="96.000" y2="107.000" />
+    <line class="ext" x1="33.000" y1="539.000" x2="96.000" y2="539.000" />
+    <line class="dim" x1="45.000" y1="107.000" x2="45.000" y2="539.000" />
+    <text class="small" x="33.000" y="323.000" text-anchor="middle" transform="rotate(90 33.000 323.000)">144"</text>
+    <line class="dim" x1="96.000" y1="83.000" x2="636.000" y2="83.000" />
+    <text class="small" x="366.000" y="75.500" text-anchor="middle">180"</text>
+    <line class="dim" x1="660.000" y1="107.000" x2="660.000" y2="539.000" />
+    <text class="small" x="672.000" y="323.000" text-anchor="middle" transform="rotate(90 672.000 323.000)">144"</text>
+    <line class="dim" x1="96.000" y1="563.000" x2="492.000" y2="563.000" />
+    <text class="small" x="294.000" y="575.000" text-anchor="middle">132"</text>
+    <line class="dim" x1="492.000" y1="563.000" x2="612.000" y2="563.000" />
+    <text class="small" x="552.000" y="575.000" text-anchor="middle">40"</text>
+    <line class="dim" x1="612.000" y1="563.000" x2="636.000" y2="563.000" />
+    <text class="small" x="624.000" y="575.000" text-anchor="middle">8"</text>
+    <line class="dim" x1="72.000" y1="107.000" x2="72.000" y2="239.000" />
+    <text class="small" x="60.000" y="173.000" text-anchor="middle" transform="rotate(90 60.000 173.000)">44"</text>
+    <line class="dim" x1="72.000" y1="239.000" x2="72.000" y2="419.000" />
+    <text class="small" x="60.000" y="329.000" text-anchor="middle" transform="rotate(90 60.000 329.000)">60"</text>
+    <line class="dim" x1="72.000" y1="419.000" x2="72.000" y2="539.000" />
+    <text class="small" x="60.000" y="479.000" text-anchor="middle" transform="rotate(90 60.000 479.000)">40"</text>
   </g>
   <g id="coordinate-reference">
-    <circle cx="96.000" cy="96.000" r="4" fill="#b00020" />
-    <text class="small" x="103.000" y="110.000">(0,0)</text>
+    <circle cx="96.000" cy="107.000" r="4" fill="#b00020" />
+    <text class="small" x="103.000" y="121.000">(0,0)</text>
   </g>
-  <g id="generated-furniture"><g id="Sofa" data-object="Sofa84" transform="translate(216.00 522.00) rotate(0)" data-rotation="0"><rect x="0" y="-102.00" width="252.00" height="102.00" rx="5" fill="#d9e8f7" fill-opacity="0.88" stroke="#1f4e79" stroke-width="2" /><line x1="0.00" y1="0.00" x2="252.00" y2="0.00" stroke="#1f4e79" stroke-width="7" /><line x1="84.00" y1="-15.00" x2="84.00" y2="-87.00" stroke="#1f4e79" stroke-width="1.5" /><line x1="168.00" y1="-15.00" x2="168.00" y2="-87.00" stroke="#1f4e79" stroke-width="1.5" /><line x1="15.00" y1="0.00" x2="15.00" y2="-102.00" stroke="#1f4e79" stroke-width="5" /><line x1="237.00" y1="0.00" x2="237.00" y2="-102.00" stroke="#1f4e79" stroke-width="5" /><text x="126.00" y="-51.00" text-anchor="middle" dominant-baseline="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#111" pointer-events="none">Sofa</text></g><g id="Coffee Table" data-object="CoffeeTable44" transform="translate(276.00 366.00) rotate(0)" data-rotation="0"><rect x="0" y="-66.00" width="132.00" height="66.00" rx="5" fill="#eadcf4" fill-opacity="0.88" stroke="#62407a" stroke-width="2" /><line x1="0.00" y1="0.00" x2="132.00" y2="0.00" stroke="#62407a" stroke-width="7" /><text x="66.00" y="-33.00" text-anchor="middle" dominant-baseline="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#111" pointer-events="none">Coffee Table</text></g><g id="Armchair" data-object="Armchair32" transform="translate(612.00 276.00) rotate(225)" data-rotation="225"><rect x="0" y="-96.00" width="96.00" height="96.00" rx="5" fill="#f7e3c6" fill-opacity="0.88" stroke="#7a4b18" stroke-width="2" /><line x1="0.00" y1="0.00" x2="96.00" y2="0.00" stroke="#7a4b18" stroke-width="7" /><line x1="11.52" y1="0.00" x2="11.52" y2="-96.00" stroke="#7a4b18" stroke-width="5" /><line x1="84.48" y1="0.00" x2="84.48" y2="-96.00" stroke="#7a4b18" stroke-width="5" /><text x="48.00" y="-48.00" text-anchor="middle" dominant-baseline="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#111" pointer-events="none">Armchair</text></g><g id="Bookcase" data-object="Bookcase40" transform="translate(306.00 99.00) rotate(180)" data-rotation="180"><rect x="0" y="-36.00" width="120.00" height="36.00" rx="5" fill="#eeeeee" fill-opacity="0.88" stroke="#444444" stroke-width="2" /><line x1="0.00" y1="0.00" x2="120.00" y2="0.00" stroke="#444444" stroke-width="7" /><text x="60.00" y="-18.00" text-anchor="middle" dominant-baseline="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#111" pointer-events="none">Bookcase</text></g><g id="Side Table" data-object="SideTable20"><circle cx="168.00" cy="474.00" r="30.00" fill="#f3ead2" fill-opacity="0.88" stroke="#796a3b" stroke-width="2" /><circle cx="168.00" cy="474.00" r="3" fill="#796a3b" /><text x="168.00" y="474.00" text-anchor="middle" dominant-baseline="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#111" pointer-events="none">Side Table</text></g><g id="Lamp" data-object="FloorLamp14"><circle cx="588.00" cy="144.00" r="21.00" fill="#fff5bf" fill-opacity="0.88" stroke="#776700" stroke-width="2" /><circle cx="588.00" cy="144.00" r="3.15" fill="#776700" /><text x="588.00" y="144.00" text-anchor="middle" dominant-baseline="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#111" pointer-events="none">Lamp</text></g></g></svg>
+  <g id="generated-furniture"><g id="Sofa" data-object="Sofa84" transform="translate(216.00 533.00) rotate(0)" data-rotation="0"><rect x="0" y="-102.00" width="252.00" height="102.00" rx="5" fill="#d9e8f7" fill-opacity="0.88" stroke="#1f4e79" stroke-width="2" /><line x1="0.00" y1="0.00" x2="252.00" y2="0.00" stroke="#1f4e79" stroke-width="7" /><line x1="84.00" y1="-15.00" x2="84.00" y2="-87.00" stroke="#1f4e79" stroke-width="1.5" /><line x1="168.00" y1="-15.00" x2="168.00" y2="-87.00" stroke="#1f4e79" stroke-width="1.5" /><line x1="15.00" y1="0.00" x2="15.00" y2="-102.00" stroke="#1f4e79" stroke-width="5" /><line x1="237.00" y1="0.00" x2="237.00" y2="-102.00" stroke="#1f4e79" stroke-width="5" /><text x="126.00" y="-51.00" text-anchor="middle" dominant-baseline="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#111" pointer-events="none">Sofa</text></g><g id="Coffee Table" data-object="CoffeeTable44" transform="translate(276.00 377.00) rotate(0)" data-rotation="0"><rect x="0" y="-66.00" width="132.00" height="66.00" rx="5" fill="#eadcf4" fill-opacity="0.88" stroke="#62407a" stroke-width="2" /><line x1="0.00" y1="0.00" x2="132.00" y2="0.00" stroke="#62407a" stroke-width="7" /><text x="66.00" y="-33.00" text-anchor="middle" dominant-baseline="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#111" pointer-events="none">Coffee Table</text></g><g id="Armchair" data-object="Armchair32" transform="translate(612.00 287.00) rotate(225)" data-rotation="225"><rect x="0" y="-96.00" width="96.00" height="96.00" rx="5" fill="#f7e3c6" fill-opacity="0.88" stroke="#7a4b18" stroke-width="2" /><line x1="0.00" y1="0.00" x2="96.00" y2="0.00" stroke="#7a4b18" stroke-width="7" /><line x1="11.52" y1="0.00" x2="11.52" y2="-96.00" stroke="#7a4b18" stroke-width="5" /><line x1="84.48" y1="0.00" x2="84.48" y2="-96.00" stroke="#7a4b18" stroke-width="5" /><text x="48.00" y="-48.00" text-anchor="middle" dominant-baseline="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#111" pointer-events="none">Armchair</text></g><g id="Bookcase" data-object="Bookcase40" transform="translate(306.00 110.00) rotate(180)" data-rotation="180"><rect x="0" y="-36.00" width="120.00" height="36.00" rx="5" fill="#eeeeee" fill-opacity="0.88" stroke="#444444" stroke-width="2" /><line x1="0.00" y1="0.00" x2="120.00" y2="0.00" stroke="#444444" stroke-width="7" /><text x="60.00" y="-18.00" text-anchor="middle" dominant-baseline="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#111" pointer-events="none">Bookcase</text></g><g id="Side Table" data-object="SideTable20"><circle cx="168.00" cy="485.00" r="30.00" fill="#f3ead2" fill-opacity="0.88" stroke="#796a3b" stroke-width="2" /><circle cx="168.00" cy="485.00" r="3" fill="#796a3b" /><text x="168.00" y="485.00" text-anchor="middle" dominant-baseline="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#111" pointer-events="none">Side Table</text></g><g id="Lamp" data-object="FloorLamp14"><circle cx="588.00" cy="155.00" r="21.00" fill="#fff5bf" fill-opacity="0.88" stroke="#776700" stroke-width="2" /><circle cx="588.00" cy="155.00" r="3.15" fill="#776700" /><text x="588.00" y="155.00" text-anchor="middle" dominant-baseline="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#111" pointer-events="none">Lamp</text></g></g></svg>

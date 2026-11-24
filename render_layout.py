@@ -19,6 +19,7 @@ Circle anchor: center.
 from __future__ import annotations
 
 import argparse
+import math
 import os
 import sys
 import tempfile
@@ -418,6 +419,35 @@ def annotation_text(group: ET.Element, x: float, y: float, text: str, item: dict
         })
         span.text = line
 
+def callout_leader_start(item: dict) -> tuple[float, float] | None:
+    """Return the SVG point where a callout's leader leaves its text.
+
+    The text box is estimated from the font size, because SVG text cannot be
+    measured here. Returns None when the target lies within the text box.
+    """
+    size = float(item.get("size", 12))
+    lines = item["text"].splitlines() or [""]
+    pad = 4.0
+    half_w = max(len(line) for line in lines) * size * 0.6 / 2 + pad
+    half_h = ((len(lines) - 1) * size * 1.25 + size * 1.05) / 2 + pad
+    # Text is placed by baseline, so its visual center is slightly above y.
+    center_y = -size * 0.275
+
+    # Work in the text's own unrotated frame, relative to its anchor.
+    angle = math.radians(float(item.get("rotation", 0)))
+    cos, sin = math.cos(angle), math.sin(angle)
+    ax, ay = sx(float(item["x"])), sy(float(item["y"]))
+    tx = sx(float(item["leader_to"]["x"])) - ax
+    ty = sy(float(item["leader_to"]["y"])) - ay
+    dx = tx * cos + ty * sin
+    dy = -tx * sin + ty * cos - center_y
+
+    reach = max(abs(dx) / half_w, abs(dy) / half_h)
+    if reach <= 1:
+        return None
+    px, py = dx / reach, dy / reach + center_y
+    return ax + px * cos - py * sin, ay + px * sin + py * cos
+
 def ensure_annotation_markers(root: ET.Element) -> None:
     defs = next((child for child in root if child.tag == q("defs")), None)
     if defs is None:
@@ -447,12 +477,14 @@ def render_annotations(root: ET.Element, annotations: dict) -> None:
         elif atype == "callout":
             x, y = float(item["x"]), float(item["y"])
             tx, ty = float(item["leader_to"]["x"]), float(item["leader_to"]["y"] )
-            ET.SubElement(group, q("line"), {
-                "x1": f"{sx(x):.2f}", "y1": f"{sy(y):.2f}",
-                "x2": f"{sx(tx):.2f}", "y2": f"{sy(ty):.2f}",
-                "stroke": color, "stroke-width": "1.5",
-                "marker-end": "url(#annotation-arrow)",
-            })
+            leader_start = callout_leader_start(item)
+            if leader_start is not None:
+                ET.SubElement(group, q("line"), {
+                    "x1": f"{leader_start[0]:.2f}", "y1": f"{leader_start[1]:.2f}",
+                    "x2": f"{sx(tx):.2f}", "y2": f"{sy(ty):.2f}",
+                    "stroke": color, "stroke-width": "1.5",
+                    "marker-end": "url(#annotation-arrow)",
+                })
             annotation_text(group, x, y, item["text"], item)
         elif atype == "dimension":
             p1, p2 = item["from"], item["to"]

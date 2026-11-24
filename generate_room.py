@@ -379,7 +379,10 @@ def draw_dimensions(group: ET.Element, features: list[dict[str,Any]], width: flo
 def generate(room: dict[str,Any], output: Path, scale: float) -> None:
     width,depth,features=validate_room(room)
     margin_in=32.0
-    c=Canvas(scale=scale,origin_x=margin_in*scale,origin_y=margin_in*scale,width=(width+2*margin_in)*scale,height=(depth+2*margin_in)*scale)
+    # The title is a fixed size but the overall-width label (19" above the room)
+    # moves with scale, so add space when the two would touch.
+    title_space=max(0.0,50.0-(margin_in-19)*scale)
+    c=Canvas(scale=scale,origin_x=margin_in*scale,origin_y=margin_in*scale+title_space,width=(width+2*margin_in)*scale,height=(depth+2*margin_in)*scale+title_space)
     root=ET.Element(q("svg"),{
         "width":f"{c.width:.0f}","height":f"{c.height:.0f}","viewBox":f"0 0 {c.width:.3f} {c.height:.3f}",
         "data-origin-x":f"{c.origin_x:g}","data-origin-y":f"{c.origin_y:g}","data-scale":f"{scale:g}",
